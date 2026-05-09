@@ -3,10 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Clock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(ellipse at 42% 36%, #1c1710 0%, #08070a 100%);
+        }
+        svg {
+            width: clamp(260px, 72vmin, 460px);
+            height: clamp(260px, 72vmin, 460px);
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>helloworld</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, cum neque provident commodi molestias vitae ut nobis ducimus temporibus magni corrupti quis reprehenderit placeat, obcaecati modi fugit tempora quidem officia!</p>
+    <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <radialGradient id="face" cx="43%" cy="36%" r="68%">
+                <stop offset="0%"   stop-color="#fdf9f0"/>
+                <stop offset="65%"  stop-color="#f0e3c8"/>
+                <stop offset="100%" stop-color="#dfc9a5"/>
+            </radialGradient>
+            <radialGradient id="vig" cx="50%" cy="50%" r="50%">
+                <stop offset="62%" stop-color="rgba(0,0,0,0)"/>
+                <stop offset="100%" stop-color="rgba(0,0,0,0.22)"/>
+            </radialGradient>
+            <radialGradient id="shine" cx="30%" cy="22%" r="55%">
+                <stop offset="0%"   stop-color="rgba(255,255,255,0.13)"/>
+                <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+            </radialGradient>
+            <linearGradient id="bezel" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%"   stop-color="#e2c462"/>
+                <stop offset="28%"  stop-color="#8c6e1c"/>
+                <stop offset="52%"  stop-color="#c8a040"/>
+                <stop offset="72%"  stop-color="#ecd872"/>
+                <stop offset="100%" stop-color="#8c6e1c"/>
+            </linearGradient>
+            <filter id="shadow" x="-12%" y="-12%" width="124%" height="124%">
+                <feDropShadow dx="0" dy="14" stdDeviation="20" flood-color="#000" flood-opacity="0.7"/>
+            </filter>
+        </defs>
+
+        <!-- Case & bezel layers -->
+        <circle cx="250" cy="250" r="222" fill="#100e09"/>
+        <circle cx="250" cy="250" r="218" fill="url(#bezel)"/>
+        <circle cx="250" cy="250" r="212" fill="#1a1308"/>
+        <circle cx="250" cy="250" r="209" fill="#c8a040" opacity="0.55"/>
+        <circle cx="250" cy="250" r="206" fill="#0e0c08"/>
+        <circle cx="250" cy="250" r="203" fill="#c8a040" opacity="0.28"/>
+
+        <!-- Dial face -->
+        <circle cx="250" cy="250" r="202" fill="url(#face)" filter="url(#shadow)"/>
+        <circle cx="250" cy="250" r="202" fill="url(#vig)"/>
+
+        <!-- Minute track ring -->
+        <circle cx="250" cy="250" r="193" fill="none" stroke="#b89040" stroke-width="0.7" opacity="0.38"/>
+
+        <!-- 48 minute tick marks (non-hour angles only) -->
+        <!-- Each line: from face outer edge (y=48, r=202) inward 12px -->
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(6,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(12,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(18,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(24,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(36,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(42,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(48,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(54,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(66,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(72,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(78,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(84,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(96,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(102,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(108,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(114,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(126,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(132,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(138,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(144,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(156,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(162,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(168,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(174,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(186,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(192,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(198,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(204,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(216,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(222,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(228,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(234,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(246,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(252,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(258,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(264,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(276,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(282,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(288,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(294,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(306,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(312,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(318,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(324,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(336,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(342,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(348,250,250)"/>
+        <line x1="250" y1="48" x2="250" y2="60" stroke="#9b8460" stroke-width="1.5" stroke-linecap="round" transform="rotate(354,250,250)"/>
+
+        <!-- Numerals at r=153 from center (250,250) -->
+        <text x="250" y="97"  text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="28" font-weight="500" fill="#291806">12</text>
+        <text x="326" y="118" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">1</text>
+        <text x="382" y="174" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">2</text>
+        <text x="403" y="250" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">3</text>
+        <text x="382" y="326" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">4</text>
+        <text x="326" y="382" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">5</text>
+        <text x="250" y="403" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">6</text>
+        <text x="174" y="382" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">7</text>
+        <text x="118" y="326" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">8</text>
+        <text x="97"  y="250" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">9</text>
+        <text x="118" y="174" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">10</text>
+        <text x="174" y="118" text-anchor="middle" dominant-baseline="central" font-family="'Cormorant Garamond',Georgia,serif" font-size="26" font-weight="500" fill="#291806">11</text>
+
+        <!-- Brand name on dial -->
+        <text x="250" y="305" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-size="12" font-weight="400" fill="#8a7050" letter-spacing="5">TEMPUS</text>
+
+        <!-- Hour hand: 10:10 → 305° from 12 o'clock -->
+        <!-- (10h × 30° + 10min × 0.5°/min = 305°) -->
+        <g transform="translate(250,250) rotate(305)">
+            <polygon points="0,-112 5,8 3,24 0,28 -3,24 -5,8" fill="#1c1008"/>
+            <polygon points="0,-104 1.2,4 0,7 -1.2,4" fill="#c9a040" opacity="0.5"/>
+        </g>
+
+        <!-- Minute hand: 10 minutes → 60° from 12 o'clock -->
+        <g transform="translate(250,250) rotate(60)">
+            <polygon points="0,-148 3,8 2,22 0,25 -2,22 -3,8" fill="#1c1008"/>
+            <polygon points="0,-140 0.8,4 0,6 -0.8,4" fill="#c9a040" opacity="0.5"/>
+        </g>
+
+        <!-- Center cap -->
+        <circle cx="250" cy="250" r="10" fill="#c9a040"/>
+        <circle cx="250" cy="250" r="7"  fill="#1c1008"/>
+        <circle cx="250" cy="250" r="3"  fill="#c9a040"/>
+        <circle cx="248.5" cy="248.5" r="1.4" fill="rgba(255,255,255,0.55)"/>
+
+        <!-- Crystal glass reflection -->
+        <circle cx="250" cy="250" r="202" fill="url(#shine)" pointer-events="none"/>
+    </svg>
 </body>
 </html>
